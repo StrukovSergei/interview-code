@@ -1,32 +1,39 @@
-def two_sum(nums, target):
-    # Create a dictionary to store the indices of numbers
-    num_indices = {}
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
-    # Iterate through the array
-    for i, num in enumerate(nums):
-        # Calculate the complement (the number needed to reach the target)
-        complement = target - num
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-        # Check if the complement is in the dictionary
-        if complement in num_indices:
-            # If found, return the indices of the two numbers
-            return [num_indices[complement], i]
-        
-        # If not found, add the current number and its index to the dictionary
-        num_indices[num] = i
+// You can return the answer in any order.
 
-    # If no solution is found
-    return None
+ 
 
-# Example usage:
-nums1 = [2, 7, 11, 15]
-target1 = 9
-print(two_sum(nums1, target1))  # Output: [0, 1]
+// Example 1:
 
-nums2 = [3, 2, 4]
-target2 = 6
-print(two_sum(nums2, target2))  # Output: [1, 2]
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+// Example 2:
 
-nums3 = [3, 3]
-target3 = 6
-print(two_sum(nums3, target3))  # Output: [0, 1]
+// Input: nums = [3,2,4], target = 6
+// Output: [1,2]
+// Example 3:
+
+// Input: nums = [3,3], target = 6
+// Output: [0,1]
+ 
+function twoSum(nums, target) {
+    const numIndices = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i]
+        const complement = target - num
+
+        if (complement in numIndices) {
+            return [numIndices[complement], i]
+        }
+
+        numIndices[num] = i
+    }
+
+    return null
+}
+

@@ -25,38 +25,28 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
-    // Check if the lengths are different
     if (s.length !== t.length) {
-        return false;
+        return false
     }
 
-    // Create an object to store the frequency of characters in s
-    const charFrequency = {};
+    const charFrequency = {}
 
-    // Iterate through string s and update the frequency of each character
     for (let char of s) {
-        charFrequency[char] = (charFrequency[char] || 0) + 1;
+        charFrequency[char] = (charFrequency[char] || 0) + 1
     }
 
-    // Iterate through string t and decrement the frequency of each character
     for (let char of t) {
         if (!(char in charFrequency)) {
-            // If a character in t is not in s, return false
-            return false;
+            return false
         }
 
-        charFrequency[char]--;
+        charFrequency[char]--
 
-        // If the frequency becomes negative, return false
         if (charFrequency[char] < 0) {
-            return false;
+            return false
         }
     }
 
-    // If the lengths are the same and all frequencies are zero, return true
-    return true;
-};
+    return true
+}
 
-// Example usage:
-console.log(isAnagram("anagram", "nagaram")); // Output: true
-console.log(isAnagram("rat", "car")); // Output: false

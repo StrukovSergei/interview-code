@@ -1,31 +1,37 @@
+// Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+ 
+
+// Example 1:
+
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+// Example 2:
+
+// Input: strs = [""]
+// Output: [[""]]
+// Example 3:
+
+// Input: strs = ["a"]
+// Output: [["a"]]
+
 function groupAnagrams(strs) {
-    const anagramsMap = {};
+    const anagramsMap = {}
 
     for (const word of strs) {
-        // Sort the letters in the word
-        const sortedWord = word.split('').sort().join('');
+        const sortedWord = word.split('').sort().join('')
 
-        // Use the sorted word as a key in the map
-        // Add the original word to the corresponding group
         if (anagramsMap.hasOwnProperty(sortedWord)) {
-            anagramsMap[sortedWord].push(word);
+            anagramsMap[sortedWord].push(word)
         } else {
-            anagramsMap[sortedWord] = [word];
+            anagramsMap[sortedWord] = [word]
         }
     }
 
-    // Convert the values (groups of anagrams) from the map to an array
-    const result = Object.values(anagramsMap);
+    const result = Object.values(anagramsMap)
 
-    return result;
+    return result
 }
 
-// Example usage:
-const strs1 = ["eat", "tea", "tan", "ate", "nat", "bat"];
-console.log(groupAnagrams(strs1));
-
-const strs2 = [""];
-console.log(groupAnagrams(strs2));
-
-const strs3 = ["a"];
-console.log(groupAnagrams(strs3));
